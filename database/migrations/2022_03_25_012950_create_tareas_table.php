@@ -18,9 +18,9 @@ class CreateTareasTable extends Migration
 
             $table->string('Nombre');
             $table->date('FechaDeInicio');
-            $table->date('FechaFin');
+            $table->date('FechaFin')->nullable();
             $table->string('Estado');
-            
+
             $table->timestamps();
         });
     }
