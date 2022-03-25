@@ -15,7 +15,7 @@ use App\Http\Controllers\TareaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 /* Route::get('/tarea', function () {
@@ -23,4 +23,13 @@ Route::get('/', function () {
 });
 Route::get('/tarea/create',[TareaController::class, 'create']); */
 
-Route::resource('tarea', TareaController::class);
+Route::resource('tarea', TareaController::class)->middleware('auth');
+Auth::routes(['reset'=>false]);
+
+Route::get('/home', [TareaController::class, 'index'])->name('home');
+
+Route::prefix(['middleware' => 'auth'], function () {
+    
+    Route::get('/', [TareaController::class, 'index'])->name('home');
+    
+});

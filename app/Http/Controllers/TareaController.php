@@ -42,7 +42,9 @@ class TareaController extends Controller
         /* $datosTarea = $request->all(); */
         $datosTarea = $request->except('_token');
         Tarea::insert($datosTarea);
-        return response()->json($datosTarea);
+
+        /* return response()->json($datosTarea); */
+        return redirect('tarea')->with('mensaje', 'Tarea agregada con exito');
     }
 
     /**
@@ -99,6 +101,10 @@ class TareaController extends Controller
     {
         //
         Tarea::destroy($id);
-        return redirect('tarea');
+        
+
+        return redirect('tarea')->with('mensaje','Tarea Borrada');
     }
+
+   
 }

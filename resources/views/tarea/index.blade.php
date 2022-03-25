@@ -1,7 +1,16 @@
-Mostar la lista de tareas
-<<table class="table table-dark">
+@extends('layouts.app')
+@section('content')
+<div class="container">
 
-    <thead class="thead-light">
+@if(Session::has('mensaje'))
+{{ Session::get('mensaje') }}
+
+@endif
+
+<a href="{{ url('tarea/create') }}">Registrar nueva tarea</a>
+<table class="table table-dark">
+
+    <thead class="thead-dark">
         <tr>
             <th>#</th>
             <th>Nombre</th>
@@ -39,3 +48,5 @@ Mostar la lista de tareas
         @endforeach
     </tbody>
 </table>
+</div>
+@endsection

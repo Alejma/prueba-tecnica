@@ -1,4 +1,6 @@
-Formulario edicion de la tarea
+@extends('layouts.app')
+@section('content')
+<div class="container">
 
 <form method="post" action="{{ url('/tarea/'.$tarea->id ) }}">
 @csrf
@@ -6,5 +8,7 @@ Formulario edicion de la tarea
     
 
 
-@include('tarea.form');
+@include('tarea.form', ['modo'=>'Editar']);
 </form>
+</div>
+@endsection
